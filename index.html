@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brainbanque Office Manager</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-mark">B</span>
+        <div>
+          <strong>Brainbanque</strong>
+          <span>Office Manager</span>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <button class="nav-button is-active" data-view="tasks">Tasks</button>
+        <button class="nav-button" data-view="development">Development</button>
+        <button class="nav-button" data-view="clients">Clients</button>
+        <button class="nav-button" data-view="documents">Documents</button>
+        <button class="nav-button" data-view="settings">Settings</button>
+      </nav>
+      <div class="sync-card">
+        <span id="syncStatus">Local mode</span>
+        <button id="syncNow" class="small-button">Sync</button>
+      </div>
+    </aside>
+
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <h1 id="viewTitle">Tasks</h1>
+          <p id="viewSubtitle">Plan daily work, owners, priorities, and status.</p>
+        </div>
+        <div class="actions">
+          <button id="exportCsv" class="ghost-button">Export CSV</button>
+          <button id="saveToCloud" class="primary-button">Save to GSheet</button>
+        </div>
+      </header>
+
+      <section id="tasks" class="view is-active" data-title="Tasks" data-subtitle="Plan daily work, owners, priorities, and status.">
+        <form class="entry-form" data-form="tasks">
+          <input name="title" placeholder="Task name" required>
+          <input name="owner" placeholder="Owner">
+          <input name="dueDate" type="date">
+          <select name="priority">
+            <option>Normal</option>
+            <option>High</option>
+            <option>Low</option>
+          </select>
+          <select name="status">
+            <option>Pending</option>
+            <option>In Progress</option>
+            <option>Done</option>
+          </select>
+          <button type="submit">Add</button>
+        </form>
+        <div class="table-wrap">
+          <table data-table="tasks"></table>
+        </div>
+      </section>
+
+      <section id="development" class="view" data-title="Development" data-subtitle="Track modules, releases, bugs, and internal software progress.">
+        <form class="entry-form" data-form="development">
+          <input name="module" placeholder="Module or feature" required>
+          <input name="owner" placeholder="Developer">
+          <select name="stage">
+            <option>Backlog</option>
+            <option>Design</option>
+            <option>Development</option>
+            <option>Testing</option>
+            <option>Released</option>
+          </select>
+          <input name="targetDate" type="date">
+          <input name="notes" placeholder="Notes">
+          <button type="submit">Add</button>
+        </form>
+        <div class="table-wrap">
+          <table data-table="development"></table>
+        </div>
+      </section>
+
+      <section id="clients" class="view" data-title="Clients" data-subtitle="Maintain client contacts, follow-ups, documents, and current status.">
+        <form class="entry-form" data-form="clients">
+          <input name="clientName" placeholder="Client name" required>
+          <input name="contactPerson" placeholder="Contact person">
+          <input name="phone" placeholder="Phone">
+          <input name="email" type="email" placeholder="Email">
+          <select name="status">
+            <option>Lead</option>
+            <option>Active</option>
+            <option>On Hold</option>
+            <option>Closed</option>
+          </select>
+          <input name="nextFollowUp" type="date">
+          <button type="submit">Add</button>
+        </form>
+        <div class="table-wrap">
+          <table data-table="clients"></table>
+        </div>
+      </section>
+
+      <section id="documents" class="view" data-title="Documents" data-subtitle="Record collected documents and keep Google Drive links ready for download.">
+        <form class="entry-form" data-form="documents">
+          <input name="clientName" placeholder="Client or project" required>
+          <input name="documentName" placeholder="Document name" required>
+          <select name="documentType">
+            <option>KYC</option>
+            <option>Agreement</option>
+            <option>Invoice</option>
+            <option>Report</option>
+            <option>Other</option>
+          </select>
+          <input name="driveUrl" placeholder="Google Drive link">
+          <input name="upload" type="file">
+          <input name="receivedDate" type="date">
+          <button type="submit">Add</button>
+        </form>
+        <div class="table-wrap">
+          <table data-table="documents"></table>
+        </div>
+      </section>
+
+      <section id="settings" class="view" data-title="Settings" data-subtitle="Connect the app to your Google Sheet and Drive Web App.">
+        <form class="settings-panel" id="settingsForm">
+          <label>
+            Google Apps Script Web App URL
+            <input id="scriptUrl" type="url" placeholder="https://script.google.com/macros/s/.../exec">
+          </label>
+          <label>
+            Office name
+            <input id="officeName" placeholder="Brainbanque">
+          </label>
+          <div class="settings-actions">
+            <button type="submit" class="primary-button">Save Settings</button>
+            <button type="button" id="loadFromCloud" class="ghost-button">Load from GSheet</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
