@@ -2,7 +2,8 @@ const SHEETS = {
   tasks: ["id", "createdAt", "title", "owner", "dueDate", "priority", "status"],
   development: ["id", "createdAt", "module", "owner", "stage", "targetDate", "notes"],
   clients: ["id", "createdAt", "clientName", "contactPerson", "phone", "email", "status", "nextFollowUp"],
-  documents: ["id", "createdAt", "clientName", "documentName", "documentType", "driveUrl", "receivedDate"]
+  documents: ["id", "createdAt", "clientName", "documentName", "documentType", "driveUrl", "receivedDate"],
+  users: ["id", "createdAt", "name", "email", "password", "role", "status"]
 };
 
 // These defaults are used unless Script Properties named SPREADSHEET_ID or DRIVE_FOLDER_ID are set.

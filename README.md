@@ -10,6 +10,10 @@ This project is a static browser app backed by Google Sheets and Google Drive th
 - Development/project tracker
 - Client management
 - Document collection register
+- Login and registration screen
+- Role-based UI for Management, Administration, Employee, and Developer users
+- Developer panel with user management access
+- Auto sync every 1 or 2 minutes when internet is available
 - CSV export downloads
 - Optional Google Sheets sync through an Apps Script Web App
 - Optional Google Drive document upload support through Apps Script
@@ -17,6 +21,14 @@ This project is a static browser app backed by Google Sheets and Google Drive th
 ## Quick Start
 
 Open `index.html` in your browser.
+
+Default first login:
+
+- Email: `developer@brainbanque.local`
+- Password: `admin123`
+- Role: `Developer`
+
+Change this user after first setup from the Developer `Users` screen.
 
 ## Connected Google Links
 
@@ -28,11 +40,12 @@ Open `index.html` in your browser.
 The app works locally first using browser storage. To connect Google Sheets and Drive:
 
 1. Create a Google Sheet.
-2. Create four tabs named:
+2. Create five tabs named:
    - `Tasks`
    - `Development`
    - `Clients`
    - `Documents`
+   - `Users`
 3. Create a Google Drive folder for collected documents.
 4. Open Google Apps Script from the Google Sheet.
 5. Paste the code from `google-apps-script/Code.gs`.
@@ -47,6 +60,15 @@ The app works locally first using browser storage. To connect Google Sheets and 
 ## Suggested Sheet Columns
 
 The Apps Script creates and maintains the expected headers automatically if the sheets exist.
+
+## Roles
+
+- `Employee`: Tasks and Documents
+- `Administration`: Tasks, Clients, and Documents
+- `Management`: Tasks, Development, Clients, and Documents
+- `Developer`: Full access, Settings, Users, and Developer panel
+
+Auto sync runs only when the browser is online and a user is logged in. The interval can be changed in Settings between 1 minute and 2 minutes.
 
 ## Notes
 
